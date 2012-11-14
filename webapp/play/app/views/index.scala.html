@@ -1,7 +1,14 @@
-@(message: String)
+@(artists: List[Artist], recent_solds:List[HashMap[String,String]])
 
-@main("Welcome to Play 2.0") {
-    
-    @play20.welcome(message, style = "Java")
-    
+@main(recent_solds){
+<h1>TOP</h1>
+<ul>
+@for(artist <- artists){
+  <li>
+    <a href="/artist/@artist.id">
+      <span class="artist_name">@artist.name</span>
+    </a>
+  </li>
+}
+</ul>
 }

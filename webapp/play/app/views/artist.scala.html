@@ -1,0 +1,12 @@
+@(artist :Artist, ticketMaps :List[HashMap[String,String]], recent_solds:List[HashMap[String,String]])
+
+@main(recent_solds){
+<h2>@artist.name</h2>
+<ul>
+@for(ticketMap <- ticketMaps){
+<li class="ticket">
+  <a href="/ticket/@ticketMap("ticketId")">@ticketMap("ticketName")</a>残り<span class="count">@ticketMap("count")</span>枚
+</li>
+}
+</ul>
+}

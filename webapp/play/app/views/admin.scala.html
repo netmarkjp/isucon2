@@ -1,4 +1,3 @@
-@(recent_solds:List[HashMap[String,String]])(content:Html)
 <!DOCTYPE html>
 <html>
   <head>
@@ -17,20 +16,18 @@
       </a>
     </header>
     <div id="sidebar">
-@if(recent_solds != null){
-      <table>
-        <tr><th colspan="2">最近購入されたチケット</th></tr>
-        @for(recent_sold <- recent_solds){
-        <tr>
-          <td class="recent_variation">@recent_sold("artistName") @recent_sold("ticketName") @recent_sold("variationName")</td>
-          <td class="recent_seat_id">@recent_sold("seatId")</td>
-        </tr>
-        }
-      </table>
-}
     </div>
     <div id="content">
-@content
+<ul>
+  <li>
+    <a href="/admin/order.csv">注文CSV</a>
+  </li>
+  <li>
+    <form method="POST">
+      <input type="submit" value="データ初期化">
+    </form>
+  </li>
+</ul>
     </div>
   </body>
 </html>

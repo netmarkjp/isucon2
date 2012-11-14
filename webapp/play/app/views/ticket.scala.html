@@ -1,0 +1,38 @@
+@(ticket :Ticket, variations :List[HashMap[String, Any]], recent_solds:List[HashMap[String,String]])
+@main(recent_solds){
+<h2>@ticket.name</h2>
+<ul>
+@for(variationMap <- variations){
+@defining(variationMap.get("variation").asInstanceOf[Variation]){ variation =>
+@defining(variationMap.get("vacancy").asInstanceOf[Integer]){ vacancy =>
+<li class="variation">
+  <form method="POST" action="/buy">
+    <input type="hidden" name="ticket_id" value="@variation.ticketId">
+    <input type="hidden" name="variation_id" value="@variation.id">
+    <span class="variation_name">@variation.name</span> 残り<span class="vacancy" id="vacancy_@variation.id">@vacancy</span>席
+    <input type="text" name="member_id" value="">
+    <input type="submit" value="購入">
+  </form>
+</li>
+}}
+}
+</ul>
+
+<h3>席状況</h3>
+@for(variationMap <- variations){
+@defining(variationMap.get("variation").asInstanceOf[Variation]){ variation =>
+@defining(variationMap.get("vacancy").asInstanceOf[Integer]){ vacancy =>
+@defining(variationMap.get("stocks").asInstanceOf[List[Stock]]){ stocks =>
+<h4>@variation.name</h4>
+<table class="seats" data-variationid="@variation.id">
+@for(row <- 0 to 63){
+  <tr>
+    @for(col <- 0 to 63){
+    @defining(stocks.get(row*63+col)){ stock =>  <td id="@stock.seatId" class="@(if(stock.orderId==null){"available"}else{"unavailable"})"></td>  }
+    }
+  </tr>
+  }
+</table>
+}}}
+}
+}
