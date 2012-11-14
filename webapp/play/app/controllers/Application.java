@@ -157,7 +157,7 @@ public class Application extends Controller {
 		} finally {
 			Ebean.endTransaction();
 		}
-		return ok(views.html.admin.render());
+		return found("/admin");
 	}
 
 	public static Result adminOrderCSV() {
