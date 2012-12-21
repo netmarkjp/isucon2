@@ -4,38 +4,38 @@
 # --- !Ups
 
 create table artist (
-  id                        bigint auto_increment not null,
+  id                        integer auto_increment not null,
   name                      varchar(255),
   constraint pk_artist primary key (id))
 ;
 
 create table order_request (
-  id                        bigint auto_increment not null,
+  id                        integer auto_increment not null,
   member_id                 varchar(255),
   constraint pk_order_request primary key (id))
 ;
 
 create table stock (
-  id                        bigint auto_increment not null,
-  variation_id              bigint,
+  id                        integer auto_increment not null,
+  variation_id              integer,
   seat_id                   varchar(255),
-  order_id                  bigint,
+  order_id                  integer,
   updated_at                datetime not null,
   constraint uq_stock_1 unique (variation_id,seat_id),
   constraint pk_stock primary key (id))
 ;
 
 create table ticket (
-  id                        bigint auto_increment not null,
+  id                        integer auto_increment not null,
   name                      varchar(255),
-  artist_id                 bigint,
+  artist_id                 integer,
   constraint pk_ticket primary key (id))
 ;
 
 create table variation (
-  id                        bigint auto_increment not null,
+  id                        integer auto_increment not null,
   name                      varchar(255),
-  ticket_id                 bigint,
+  ticket_id                 integer,
   constraint pk_variation primary key (id))
 ;
 

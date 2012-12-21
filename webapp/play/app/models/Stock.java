@@ -16,17 +16,17 @@ import com.avaje.ebean.annotation.UpdatedTimestamp;
 		"seat_id" }) })
 public class Stock extends Model {
 	@Id
-	public Long id;
+	public Integer id;
 
-	public Long variationId;
+	public Integer variationId;
 
 	public String seatId;
 
-	public Long orderId;
+	public Integer orderId;
 
 	@UpdatedTimestamp
 	public Date updatedAt;
 
-	public static Finder<Long, Stock> find = new Finder<Long, Stock>(
-			Long.class, Stock.class);
+	public static Finder<Integer, Stock> find = new Finder<Integer, Stock>(
+			Integer.class, Stock.class);
 }

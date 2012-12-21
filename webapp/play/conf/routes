@@ -4,8 +4,8 @@
 
 # Home page
 GET		/							controllers.Application.index()
-GET		/artist/:artistId			controllers.Application.artist(artistId:Long)
-GET		/ticket/:ticketId			controllers.Application.ticket(ticketId:Long)
+GET		/artist/:artistId			controllers.Application.artist(artistId:Integer)
+GET		/ticket/:ticketId			controllers.Application.ticket(ticketId:Integer)
 POST	/buy						controllers.Application.buy()
 GET		/admin						controllers.Application.adminIndex()
 POST    /admin						controllers.Application.adminIndexPost()

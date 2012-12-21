@@ -51,7 +51,7 @@ public class Application extends Controller {
 		return ok(views.html.index.render(Artist.find.all(), getRecentSolds()));
 	}
 
-	public static Result artist(Long artistId) {
+	public static Result artist(Integer artistId) {
 		SqlQuery query = Ebean
 				.createSqlQuery("SELECT COUNT(*) as cnt FROM variation"
 						+ " INNER JOIN stock ON stock.variation_id = variation.id"
@@ -67,14 +67,14 @@ public class Application extends Controller {
 			ticketMap.put("ticketName", ticket.name);
 			List<SqlRow> count = query.setParameter("ticketId", ticket.id)
 					.findList();
-			ticketMap.put("count", count.get(0).getLong("cnt").toString());
+			ticketMap.put("count", count.get(0).getInteger("cnt").toString());
 			ticketMaps.add(ticketMap);
 		}
 		return ok(views.html.artist
 				.render(artist, ticketMaps, getRecentSolds()));
 	}
 
-	public static Result ticket(Long ticketId) {
+	public static Result ticket(Integer ticketId) {
 		Ticket ticket = Ticket.find.byId(ticketId);
 		List<HashMap<String, Object>> variations = new ArrayList<HashMap<String, Object>>();
 		for (Variation variation : Variation.find.where()
@@ -83,7 +83,7 @@ public class Application extends Controller {
 			element.put("variation", variation);
 
 			int vacancy = Stock.find.where()
-					.eq("variation_id", Long.toString((variation.id)))
+					.eq("variation_id", Integer.toString((variation.id)))
 					.isNull("order_id").findList().size();
 			element.put("vacancy", vacancy);
 

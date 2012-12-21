@@ -9,12 +9,12 @@ import play.db.ebean.Model;
 public class Ticket extends Model {
 
 	@Id
-	public Long id;
+	public Integer id;
 
 	public String name;
 
-	public Long artistId;
+	public Integer artistId;
 
-	public static Finder<Long, Ticket> find = new Finder<Long, Ticket>(
-			Long.class, Ticket.class);
+	public static Finder<Integer, Ticket> find = new Finder<Integer, Ticket>(
+			Integer.class, Ticket.class);
 }

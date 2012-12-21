@@ -8,11 +8,11 @@ import play.db.ebean.Model;
 @Entity
 public class Artist extends Model {
 	@Id
-	public Long id;
+	public Integer id;
 
 	public String name;
 
-	public static Finder<Long, Artist> find = new Finder<Long, Artist>(
-			Long.class, Artist.class);
+	public static Finder<Integer, Artist> find = new Finder<Integer, Artist>(
+			Integer.class, Artist.class);
 
 }
