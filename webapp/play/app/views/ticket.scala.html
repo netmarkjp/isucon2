@@ -28,7 +28,7 @@
 @for(row <- 0 to 63){
   <tr>
     @for(col <- 0 to 63){
-    @defining(stocks.get(row*63+col)){ stock =>  <td id="@stock.seatId" class="@(if(stock.orderId==null){"available"}else{"unavailable"})"></td>  }
+    @defining(stocks.get(row*64+col)){ stock =>  <td id="@stock.seatId" class="@(if(stock.orderId==null){"available"}else{"unavailable"})"></td>  }
     }
   </tr>
   }
